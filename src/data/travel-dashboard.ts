@@ -23,7 +23,6 @@ import type { LucideIcon } from "lucide-react";
 export type NavItem = {
   label: string;
   icon: LucideIcon;
-  active?: boolean;
 };
 
 export type QuickAction = {
@@ -60,7 +59,7 @@ export type BudgetSlice = {
 };
 
 export const navItems: NavItem[] = [
-  { label: "Home", icon: Home, active: true },
+  { label: "Home", icon: Home },
   { label: "My Trips", icon: BriefcaseBusiness },
   { label: "Itinerary Builder", icon: Route },
   { label: "Explore", icon: Compass },

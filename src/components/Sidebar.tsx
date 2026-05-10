@@ -4,6 +4,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { TravelArtwork } from "@/components/TravelArtwork";
 import { Switch } from "@/components/ui/switch";
 import { navItems } from "@/data/travel-dashboard";
+import { getRouteForLabel, routeHashes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
 type SidebarProps = {
@@ -19,20 +20,26 @@ export function Sidebar({ darkMode, onDarkModeChange }: SidebarProps) {
       <nav aria-label="Primary navigation" className="mt-14 space-y-2">
         {navItems.map((item, index) => {
           const Icon = item.icon;
+          const route = getRouteForLabel(item.label);
+          const isActive = item.label === "Home";
+
           return (
             <motion.a
-              href="#"
+              href={route ? routeHashes[route] : "#"}
               key={item.label}
+              onClick={(event) => {
+                if (!route) event.preventDefault();
+              }}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.03 * index, duration: 0.35 }}
               className={cn(
                 "flex h-14 items-center gap-4 rounded-2xl px-5 text-[15px] font-semibold transition-all duration-300",
-                item.active
+                isActive
                   ? "bg-forest text-white shadow-[0_14px_28px_rgba(47,79,62,0.2)]"
                   : "text-ink hover:bg-white/70 hover:text-forest"
               )}
-              aria-current={item.active ? "page" : undefined}
+              aria-current={isActive ? "page" : undefined}
             >
               <Icon className="h-[22px] w-[22px]" strokeWidth={1.9} />
               <span>{item.label}</span>

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import type { TripStatus } from "@/data/my-trips";
 import { tabs, topActionIcons, trips } from "@/data/my-trips";
@@ -13,6 +13,10 @@ import { TripsSidebar } from "@/components/my-trips/TripsSidebar";
 export function MyTripsPage() {
   const [activeTab, setActiveTab] = useState<"all" | TripStatus>("all");
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
 
   const filteredTrips = useMemo(() => {
     if (activeTab === "all") return trips;
@@ -36,15 +40,25 @@ export function MyTripsPage() {
           >
             <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
               <div>
-                <h2 className="font-serif text-6xl font-bold text-[#1D231E]">My Trips</h2>
+                <h2 className="font-serif text-6xl font-bold text-[#1D231E]">
+                  My Trips
+                </h2>
               </div>
               <div className="flex flex-wrap items-center gap-3">
                 <SearchBar />
                 <ActionButton icon={FilterIcon} label="Filter" />
-                <ActionButton icon={PlanIcon} label="+ Plan New Trip" variant="primary" />
+                <ActionButton
+                  icon={PlanIcon}
+                  label="+ Plan New Trip"
+                  variant="primary"
+                />
               </div>
             </div>
-            <FilterTabs items={tabs} active={activeTab} onChange={setActiveTab} />
+            <FilterTabs
+              items={tabs}
+              active={activeTab}
+              onChange={setActiveTab}
+            />
           </motion.section>
 
           <section className="space-y-5">

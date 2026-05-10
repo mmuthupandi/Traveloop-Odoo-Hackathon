@@ -21,7 +21,6 @@ import type { LucideIcon } from "lucide-react";
 export type SidebarNavItem = {
   label: string;
   icon: LucideIcon;
-  active?: boolean;
 };
 
 export type TripStatus = "upcoming" | "ongoing" | "completed" | "cancelled";
@@ -59,7 +58,7 @@ export type TabItem = {
 
 export const sidebarItems: SidebarNavItem[] = [
   { label: "Home", icon: Home },
-  { label: "My Trips", icon: BriefcaseBusiness, active: true },
+  { label: "My Trips", icon: BriefcaseBusiness },
   { label: "Itinerary Builder", icon: MapPinned },
   { label: "Explore", icon: Compass },
   { label: "Budget", icon: WalletCards },
@@ -220,4 +219,3 @@ export const topActionIcons = {
   plan: Plane,
   more: MoreVertical
 };
-

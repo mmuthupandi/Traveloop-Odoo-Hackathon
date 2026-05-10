@@ -3,6 +3,7 @@ import { Moon, Mountain } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { sidebarItems } from "@/data/my-trips";
 import { TravelArtwork } from "@/components/TravelArtwork";
+import { getRouteForLabel, routeHashes } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
 type TripsSidebarProps = {
@@ -26,24 +27,31 @@ export function TripsSidebar({ darkMode, setDarkMode }: TripsSidebarProps) {
       <nav className="mt-12 space-y-2">
         {sidebarItems.map((item, i) => {
           const Icon = item.icon;
+          const route = getRouteForLabel(item.label);
+          const isActive = item.label === "My Trips";
+
           return (
-            <motion.button
-              type="button"
+            <motion.a
+              href={route ? routeHashes[route] : "#"}
               key={item.label}
+              onClick={(event) => {
+                if (!route) event.preventDefault();
+              }}
               initial={{ opacity: 0, x: -8 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.03 }}
               whileHover={{ x: 2 }}
               className={cn(
                 "flex h-14 w-full items-center gap-4 rounded-2xl px-4 text-left text-[17px] font-semibold transition-all duration-300",
-                item.active
+                isActive
                   ? "bg-[#2F4F3E] text-white shadow-[0_12px_24px_rgba(47,79,62,0.24)]"
                   : "text-[#27241F] hover:bg-white/70"
               )}
+              aria-current={isActive ? "page" : undefined}
             >
               <Icon className="h-5 w-5" />
               {item.label}
-            </motion.button>
+            </motion.a>
           );
         })}
       </nav>
@@ -65,4 +73,3 @@ export function TripsSidebar({ darkMode, setDarkMode }: TripsSidebarProps) {
     </aside>
   );
 }
-
