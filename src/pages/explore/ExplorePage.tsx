@@ -26,7 +26,7 @@ import { cn } from "@/lib/utils";
 
 function ExploreHeader() {
   return (
-    <header className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+    <header className="hidden flex-col gap-5 md:flex-row md:items-center md:justify-between">
       <div>
         <h1 className="font-serif text-4xl font-extrabold leading-tight text-[#1F261F] md:text-5xl">
           Hi, Explorer! <span className="font-sans text-3xl">👋</span>
@@ -393,7 +393,7 @@ export function ExplorePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.35 }}
-          className="mx-auto flex max-w-[1500px] flex-col gap-8 px-4 pb-28 pt-6 sm:px-6 lg:px-10 xl:px-12 xl:py-10"
+          className="mx-auto flex max-w-[1500px] flex-col gap-8 px-4 pt-3 pb-20 sm:px-6 lg:px-10 xl:px-12 xl:py-10"
         >
           <ExploreHeader />
           <HeroBanner

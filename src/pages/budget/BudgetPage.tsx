@@ -29,7 +29,7 @@ export function BudgetPage() {
       <AppSidebar activeRoute="budget" darkMode={darkMode} onDarkModeChange={setDarkMode} />
 
       <main className="xl:ml-[282px]">
-        <div className="mx-auto flex max-w-[1420px] flex-col gap-8 px-4 py-6 sm:px-6 lg:px-10 xl:px-12 xl:py-10">
+        <div className="mx-auto flex max-w-[1420px] flex-col gap-8 px-4 pt-3 pb-20 sm:px-6 lg:px-10 xl:px-12 xl:py-10">
 
           {/* Header */}
           <motion.div {...fadeUp(0)}>

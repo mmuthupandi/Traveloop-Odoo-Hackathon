@@ -1,38 +1,50 @@
 import { motion } from "framer-motion";
-import { Moon, Mountain } from "lucide-react";
+import { Moon, Mountain, Quote } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 import { navItems } from "@/data/travel-dashboard";
 import { TravelArtwork } from "@/components/TravelArtwork";
+import { MobileBottomNav } from "@/components/MobileBottomNav";
 import { getRouteForLabel, routeHashes, type AppRoute } from "@/lib/routes";
 import { cn } from "@/lib/utils";
 
-// One quote per active page — falls back to the default
-const quotes: Partial<Record<AppRoute, { text: string; author: string }>> = {
+export const navbarQuotes: Record<string, { quote: string; author: string }> = {
   home: {
-    text: "Jobs fill your pocket, adventures fill your soul.",
-    author: "– Jamie Lyn Beatty"
+    quote: "Jobs fill your pocket, adventures fill your soul.",
+    author: "Jaime Lyn Beatty"
   },
   "my-trips": {
-    text: "Collect moments, not things.",
-    author: "– Anonymous"
+    quote: "Collect moments, not things.",
+    author: "Karen Salmansohn"
+  },
+  "itinerary-builder": {
+    quote: "A goal without a plan is just a wish.",
+    author: "Antoine de Saint-Exupéry"
+  },
+  explore: {
+    quote: "The world is a book and those who do not travel read only one page.",
+    author: "Saint Augustine"
   },
   budget: {
-    text: "A goal without a plan is just a wish.",
-    author: "– Antoine de Saint-Exupéry"
+    quote: "Beware of little expenses; a small leak will sink a great ship.",
+    author: "Benjamin Franklin"
   },
   packing: {
-    text: "A well-packed bag sets the stage for a worry-free journey.",
-    author: "– Unknown"
+    quote: "Pack light and carry only what you need.",
+    author: "David Hieatt"
+  },
+  notes: {
+    quote: "Traveling leaves you speechless, then turns you into a storyteller.",
+    author: "Ibn Battuta"
   },
   settings: {
-    text: "The world is a book and those who do not travel read only one page.",
-    author: "– St. Augustine"
+    quote: "Simplicity is the ultimate sophistication.",
+    author: "Leonardo da Vinci"
   }
 };
 
-const defaultQuote = {
-  text: "Not all those who wander are lost.",
-  author: "– J.R.R. Tolkien"
+const fallbackQuote = {
+  quote: "Not all those who wander are lost.",
+  author: "J.R.R. Tolkien"
 };
 
 type AppSidebarProps = {
@@ -42,11 +54,13 @@ type AppSidebarProps = {
 };
 
 export function AppSidebar({ activeRoute, darkMode, onDarkModeChange }: AppSidebarProps) {
-  const quote = quotes[activeRoute] ?? defaultQuote;
+  const current = navbarQuotes[activeRoute] ?? fallbackQuote;
 
   return (
+    <>
     <aside className="fixed inset-y-0 left-0 z-40 hidden w-[282px] flex-col border-r border-[#DDD4C6] bg-[#F8F4EB] px-6 py-8 xl:flex">
-      {/* Brand */}
+
+      {/* ── Brand ── */}
       <div className="flex items-center gap-3">
         <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-[#2F4F3E] text-white shadow-[0_8px_20px_rgba(47,79,62,0.25)]">
           <Mountain className="h-7 w-7" />
@@ -59,8 +73,8 @@ export function AppSidebar({ activeRoute, darkMode, onDarkModeChange }: AppSideb
         </div>
       </div>
 
-      {/* Nav */}
-      <nav className="mt-10 space-y-1" aria-label="Primary navigation">
+      {/* ── Nav ── */}
+      <nav className="mt-8 space-y-1" aria-label="Primary navigation">
         {navItems.map((item, i) => {
           const Icon = item.icon;
           const route = getRouteForLabel(item.label);
@@ -76,7 +90,7 @@ export function AppSidebar({ activeRoute, darkMode, onDarkModeChange }: AppSideb
               transition={{ delay: i * 0.03, duration: 0.3 }}
               whileHover={isActive ? {} : { x: 3 }}
               className={cn(
-                "flex h-[52px] w-full items-center gap-3.5 rounded-2xl px-4 text-[15px] font-semibold transition-all duration-200",
+                "flex h-[50px] w-full items-center gap-3.5 rounded-2xl px-4 text-[15px] font-semibold transition-all duration-200",
                 isActive
                   ? "bg-[#2F4F3E] text-white shadow-[0_10px_24px_rgba(47,79,62,0.28)]"
                   : "text-[#3A3530] hover:bg-white/80 hover:text-[#2F4F3E] hover:shadow-[0_2px_8px_rgba(0,0,0,0.06)]"
@@ -93,25 +107,32 @@ export function AppSidebar({ activeRoute, darkMode, onDarkModeChange }: AppSideb
         })}
       </nav>
 
-      {/* Bottom section */}
-      <div className="mt-auto space-y-4 pt-6">
-        <TravelArtwork />
-
-        <motion.figure
-          key={activeRoute}
+      {/* ── Dynamic Quote Block — fills the blank gap ── */}
+      <div className="mx-1 mt-5 rounded-2xl border border-[#E2D9CC] bg-white/60 px-4 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <Quote className="h-4 w-4 text-[#2F4F3E]/50" strokeWidth={1.5} />
+        <motion.p
+          key={activeRoute + "-quote"}
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="rounded-3xl bg-white/55 px-5 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="mt-2 text-[12.5px] font-medium leading-[1.65] text-[#2C2822] italic"
         >
-          <div className="font-serif text-3xl font-bold leading-none text-[#2F4F3E]">"</div>
-          <blockquote className="mt-1 text-sm font-medium leading-[1.65] text-[#1F261F]">
-            {quote.text}
-          </blockquote>
-          <figcaption className="mt-2.5 text-xs font-medium text-[#7F7A70]">
-            {quote.author}
-          </figcaption>
-        </motion.figure>
+          "{current.quote}"
+        </motion.p>
+        <motion.p
+          key={activeRoute + "-author"}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
+          className="mt-2 text-[11px] font-semibold tracking-wide text-[#7F7A70]"
+        >
+          — {current.author}
+        </motion.p>
+      </div>
+
+      {/* ── Bottom: artwork + dark mode ── */}
+      <div className="mt-auto space-y-4 pt-5">
+        <TravelArtwork />
 
         <div className="flex items-center justify-between rounded-2xl bg-[#F0EAD8] px-4 py-3 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
           <div className="flex items-center gap-2.5 text-sm font-semibold text-[#2C2822]">
@@ -125,6 +146,11 @@ export function AppSidebar({ activeRoute, darkMode, onDarkModeChange }: AppSideb
           />
         </div>
       </div>
+
     </aside>
+
+    {/* ── Mobile bottom nav (hidden on xl+) ── */}
+    <MobileBottomNav activeRoute={activeRoute} />
+    </>
   );
 }

@@ -10,7 +10,7 @@ import {
 
 export function Header() {
   return (
-    <header className="flex items-center justify-between py-8 px-10 bg-transparent">
+    <header className="hidden items-center justify-between py-8 px-10 bg-transparent">
       <div>
         <h1 className="font-serif text-4xl font-bold text-[#2F4F3E] flex items-center gap-3">
           My Notes <span className="text-3xl">📝</span>

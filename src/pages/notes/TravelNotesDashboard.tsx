@@ -32,7 +32,7 @@ export function TravelNotesDashboard() {
 
       {/* Main Content Area */}
       <main className="flex-1 xl:ml-[282px] flex flex-col lg:flex-row">
-        <div className="flex-1 p-10 max-w-5xl">
+        <div className="flex-1 pt-3 px-4 pb-20 xl:p-10 max-w-5xl">
           <Header />
           
           <div className="mt-8">

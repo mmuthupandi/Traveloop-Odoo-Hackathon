@@ -118,7 +118,7 @@ export function ItineraryBuilderPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.35 }}
-          className="mx-auto flex max-w-[1540px] flex-col gap-8 px-4 pb-28 pt-6 sm:px-6 lg:px-10 xl:px-12 xl:py-10"
+          className="mx-auto flex max-w-[1540px] flex-col gap-8 px-4 pt-3 pb-20 sm:px-6 lg:px-10 xl:px-12 xl:py-10"
         >
           <ItineraryTopHeader />
           <PageTitleActions

@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function ItineraryTopHeader() {
   return (
-    <header className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+    <header className="hidden flex-col gap-5 md:flex-row md:items-center md:justify-between">
       <div>
         <h1 className="font-serif text-4xl font-extrabold leading-tight text-[#1F261F] md:text-5xl">
           Hi, Explorer! <span className="font-sans text-3xl">👋</span>

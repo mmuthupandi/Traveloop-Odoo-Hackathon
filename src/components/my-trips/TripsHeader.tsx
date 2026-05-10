@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export function TripsHeader() {
   return (
-    <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <header className="hidden flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <h1 className="font-serif text-5xl font-extrabold text-[#1F261F]">
           Hi, Explorer! <span className="font-sans text-4xl">👋</span>

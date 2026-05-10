@@ -13,7 +13,7 @@ import { avatarImage } from "@/data/travel-dashboard";
 
 export function BudgetHeader() {
   return (
-    <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <header className="hidden flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <h1 className="font-serif text-4xl font-extrabold leading-tight text-[#1F261F] md:text-5xl">
           Hi, Explorer! <span className="font-sans text-3xl">👋</span>
