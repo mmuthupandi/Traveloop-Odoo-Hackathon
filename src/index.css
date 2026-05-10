@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-cream font-sans text-ink antialiased;
+  }
+
+  button,
+  input {
+    @apply font-sans;
+  }
+}
