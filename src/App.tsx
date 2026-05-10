@@ -1,5 +1,6 @@
 
 import { useEffect, useState } from "react";
+import { LoginPage } from "@/pages/login/LoginPage";
 import { HomePage } from "@/pages/home/HomePage";
 import { MyTripsPage } from "@/pages/my-trips/MyTripsPage";
 import { ItineraryBuilderPage } from "@/pages/itinerary-builder/ItineraryBuilderPage";
@@ -24,6 +25,8 @@ export default function App() {
 
   const renderPage = () => {
     switch (route) {
+      case "login":
+        return <LoginPage />;
       case "my-trips":
         return <MyTripsPage />;
       case "itinerary-builder":
