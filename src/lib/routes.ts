@@ -1,7 +1,17 @@
-
-export type AppRoute = "home" | "my-trips" | "itinerary-builder" | "explore" | "budget" | "packing" | "notes" | "settings";
+export type AppRoute =
+  | "login"
+  | "home"
+  | "my-trips"
+  | "itinerary-builder"
+  | "explore"
+  | "budget"
+  | "packing"
+  | "notes"
+  | "profile"
+  | "settings";
 
 export const routeHashes: Record<AppRoute, string> = {
+  login: "#/login",
   home: "#/",
   "my-trips": "#/my-trips",
   "itinerary-builder": "#/itinerary-builder",
@@ -9,20 +19,23 @@ export const routeHashes: Record<AppRoute, string> = {
   budget: "#/budget",
   packing: "#/packing",
   notes: "#/notes",
-  settings: "#/settings"
+  profile: "#/profile",
+  settings: "#/settings",
 };
 
 export function getRouteFromHash(hash = window.location.hash): AppRoute {
   const path = hash.replace(/^#/, "");
 
+  if (path === "/login") return "login";
   if (path === "/my-trips") return "my-trips";
   if (path === "/itinerary-builder") return "itinerary-builder";
   if (path === "/explore") return "explore";
   if (path === "/budget") return "budget";
   if (path === "/packing") return "packing";
   if (path === "/notes") return "notes";
+  if (path === "/profile") return "profile";
   if (path === "/settings") return "settings";
-  
+
   return "home";
 }
 
