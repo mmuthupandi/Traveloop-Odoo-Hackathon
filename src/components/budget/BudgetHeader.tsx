@@ -45,11 +45,11 @@ export function BudgetHeader() {
               aria-label="Open user menu"
             >
               <Avatar>
-                <AvatarImage src={avatarImage} alt="Aarav Sharma" />
-                <AvatarFallback>AS</AvatarFallback>
+                <AvatarImage src={avatarImage} alt="Heisenberg" />
+                <AvatarFallback>HB</AvatarFallback>
               </Avatar>
               <span className="hidden text-sm font-bold text-[#1F261F] sm:block">
-                Aarav Sharma
+                Heisenberg
               </span>
               <ChevronDown className="h-4 w-4 text-[#1F261F]" />
             </button>
@@ -58,7 +58,7 @@ export function BudgetHeader() {
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <UserRound className="mr-2 h-4 w-4" />
-                Profile
+                Account
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Settings className="mr-2 h-4 w-4" />

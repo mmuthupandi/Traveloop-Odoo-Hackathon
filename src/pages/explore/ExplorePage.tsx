@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { AppSidebar } from "@/components/AppSidebar";
+import { DestinationModal } from "@/components/explore/DestinationModal";
 import {
   ctaLandscapeImage,
   exploreCategories,
@@ -50,13 +51,13 @@ function ExploreHeader() {
         >
           <Avatar className="h-11 w-11">
             <AvatarImage
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80"
-              alt="Aarav Sharma"
+              src="https://upload.wikimedia.org/wikipedia/en/0/03/Walter_White_S5B.png"
+              alt="Heisenberg"
             />
-            <AvatarFallback>AS</AvatarFallback>
+            <AvatarFallback>HB</AvatarFallback>
           </Avatar>
           <span className="hidden text-sm font-bold text-[#24221D] sm:block">
-            Aarav Sharma
+            Heisenberg
           </span>
           <ChevronDown className="h-4 w-4 text-[#605B52]" />
         </button>
@@ -339,6 +340,7 @@ export function ExplorePage() {
   const [popularOffset, setPopularOffset] = useState(0);
   const [recommendedOffset, setRecommendedOffset] = useState(0);
   const [message, setMessage] = useState<string | null>(null);
+  const [selectedDestination, setSelectedDestination] = useState<ExploreDestination | null>(null);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
@@ -400,9 +402,7 @@ export function ExplorePage() {
   }, [activeCategory, allDestinations, query]);
 
   const selectDestination = (destination: ExploreDestination) => {
-    setMessage(
-      `${destination.name} saved as a possible destination from ${destination.price}.`
-    );
+    setSelectedDestination(destination);
   };
 
   return (
@@ -562,6 +562,14 @@ export function ExplorePage() {
           />
         </motion.div>
       </main>
+
+      {/* Destination detail modal */}
+      {selectedDestination && (
+        <DestinationModal
+          destination={selectedDestination}
+          onClose={() => setSelectedDestination(null)}
+        />
+      )}
     </div>
   );
 }

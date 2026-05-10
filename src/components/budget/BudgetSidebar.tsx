@@ -21,7 +21,7 @@ export function BudgetSidebar({ darkMode, setDarkMode }: BudgetSidebarProps) {
         </div>
         <div>
           <p className="font-serif text-xl font-extrabold text-[#1F261F]">
-            WONDERLUST
+            TRAVELOOP
           </p>
           <p className="font-script text-lg text-[#2F4F3E]">Stories begin here</p>
         </div>

@@ -67,7 +67,6 @@ export const navItems: NavItem[] = [
   { label: "Budget", icon: WalletCards },
   { label: "Packing List", icon: Backpack },
   { label: "Notes", icon: NotebookPen },
-  { label: "Profile", icon: UserRound },
   { label: "Settings", icon: Settings }
 ];
 
@@ -211,7 +210,10 @@ export const heroImages = [
 export const heroImage = heroImages[0];
 
 export const avatarImage =
-  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80";
+  "https://upload.wikimedia.org/wikipedia/en/0/03/Walter_White_S5B.png";
+
+export const userName = "Heisenberg";
+export const userEmail = "heisenberg@gmail.com";
 
 export const mobileActions = [
   { label: "Trips", icon: CalendarDays },

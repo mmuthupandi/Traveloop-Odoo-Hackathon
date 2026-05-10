@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Camera, MapPin, UserRound } from "lucide-react";
-import { avatarImage } from "@/data/travel-dashboard";
+import { avatarImage, userName, userEmail } from "@/data/travel-dashboard";
 
 export function ProfileCard() {
   const [editing, setEditing] = useState(false);
   const [form, setForm] = useState({
-    name: "Aarav Sharma",
-    email: "aarav.sharma@email.com",
-    bio: "Travel enthusiast, adventure seeker, and story collector.",
-    location: "New Delhi, India"
+    name: userName,
+    email: userEmail,
+    bio: "I am the one who knocks. Chemistry teacher turned travel enthusiast.",
+    location: "Albuquerque, New Mexico"
   });
   const [draft, setDraft] = useState({ ...form });
 
@@ -48,7 +48,7 @@ export function ProfileCard() {
         <div className="relative">
           <img
             src={avatarImage}
-            alt="Aarav Sharma"
+            alt={form.name}
             className="h-20 w-20 rounded-2xl object-cover ring-2 ring-[#E8DED1]"
           />
           <button

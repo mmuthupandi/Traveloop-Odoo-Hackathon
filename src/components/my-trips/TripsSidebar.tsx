@@ -19,7 +19,7 @@ export function TripsSidebar({ darkMode, setDarkMode }: TripsSidebarProps) {
           <Mountain className="h-7 w-7" />
         </div>
         <div>
-          <p className="font-serif text-xl font-extrabold text-[#1F261F]">WONDERLUST</p>
+          <p className="font-serif text-xl font-extrabold text-[#1F261F]">TRAVELOOP</p>
           <p className="font-script text-lg text-[#2F4F3E]">Stories begin here</p>
         </div>
       </div>
