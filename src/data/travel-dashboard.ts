@@ -31,6 +31,7 @@ export type QuickAction = {
   icon: LucideIcon;
   palette: string;
   iconPalette: string;
+  route: string;
 };
 
 export type Trip = {
@@ -76,35 +77,40 @@ export const quickActions: QuickAction[] = [
     description: "Start planning your next adventure",
     icon: Map,
     palette: "bg-[#EAF0E8]",
-    iconPalette: "bg-[#CFE1D1] text-forest"
+    iconPalette: "bg-[#CFE1D1] text-forest",
+    route: "itinerary-builder"
   },
   {
     title: "Explore Places",
     description: "Discover amazing destinations",
     icon: MapPinned,
     palette: "bg-[#F8EAD6]",
-    iconPalette: "bg-[#F0D5AA] text-[#7B542B]"
+    iconPalette: "bg-[#F0D5AA] text-[#7B542B]",
+    route: "explore"
   },
   {
     title: "Find Activities",
     description: "Find top activities and experiences",
     icon: Binoculars,
     palette: "bg-[#E9F0F3]",
-    iconPalette: "bg-[#CFE0E6] text-[#315363]"
+    iconPalette: "bg-[#CFE0E6] text-[#315363]",
+    route: "explore"
   },
   {
     title: "Estimate Budget",
     description: "Plan your budget smartly",
     icon: WalletCards,
     palette: "bg-[#F8E6D2]",
-    iconPalette: "bg-[#F2CB9E] text-clay"
+    iconPalette: "bg-[#F2CB9E] text-clay",
+    route: "budget"
   },
   {
     title: "Share Itinerary",
     description: "Share your trip with friends",
     icon: Share2,
     palette: "bg-[#F7E5DC]",
-    iconPalette: "bg-[#F0C7B6] text-[#C3542C]"
+    iconPalette: "bg-[#F0C7B6] text-[#C3542C]",
+    route: "my-trips"
   }
 ];
 
@@ -194,8 +200,14 @@ export const budgetStats = [
   { label: "Avg. per Trip", value: "$1,883" }
 ];
 
-export const heroImage =
-  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85";
+export const heroImages = [
+  "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85",
+  "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1800&q=85",
+  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1800&q=85",
+  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=85"
+];
+
+export const heroImage = heroImages[0];
 
 export const avatarImage =
   "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80";
