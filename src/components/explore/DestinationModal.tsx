@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  X, Star, MapPin, Clock, Globe, DollarSign, Languages,
+  X, Star, Clock, Globe, DollarSign, Languages,
   ChevronLeft, ChevronRight, Lightbulb, Route, Heart
 } from "lucide-react";
 import type { ExploreDestination } from "@/data/explore";
@@ -36,17 +36,33 @@ export function DestinationModal({ destination, onClose }: Props) {
         onClick={onClose}
       />
 
-      {/* Centering wrapper — accounts for sidebar on xl */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center xl:pl-[282px]">
-        <motion.div
-          key="modal"
-          initial={{ opacity: 0, y: 40, scale: 0.97 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 40, scale: 0.97 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="relative mx-4 flex h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl bg-[#F7F4EE] shadow-[0_24px_80px_rgba(0,0,0,0.25)]"
-          onClick={(e) => e.stopPropagation()}
-        >
+      {/* Modal — centered in the content area (right of sidebar on xl) */}
+      <motion.div
+        key="modal"
+        initial={{ opacity: 0, y: 40, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 40, scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        style={{
+          position: "fixed",
+          top: "5vh",
+          bottom: "5vh",
+          // On xl screens: center within the content area (viewport minus sidebar)
+          // left = sidebar(282) + half of remaining space - half of modal width
+          // We use left/right with margin auto trick via inset
+        }}
+        className={cn(
+          "z-50 mx-auto flex flex-col overflow-hidden rounded-3xl bg-[#F7F4EE]",
+          "shadow-[0_24px_80px_rgba(0,0,0,0.25)]",
+          // Mobile: full width with margin
+          "inset-x-3",
+          // Desktop: fixed width, centered in content area
+          "xl:left-[calc(282px+2rem)] xl:right-8 xl:mx-0 xl:max-w-2xl",
+          // On very wide screens, truly center it
+          "2xl:left-1/2 2xl:right-auto 2xl:-translate-x-1/2 2xl:w-full 2xl:max-w-2xl"
+        )}
+        onClick={(e) => e.stopPropagation()}
+      >
         {/* Image carousel */}
         <div className="relative h-64 shrink-0 overflow-hidden sm:h-72">
           <AnimatePresence mode="wait">
@@ -62,7 +78,6 @@ export function DestinationModal({ destination, onClose }: Props) {
             />
           </AnimatePresence>
 
-          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
           {/* Close */}
@@ -76,7 +91,10 @@ export function DestinationModal({ destination, onClose }: Props) {
           <button type="button" onClick={() => setSaved((v) => !v)}
             className="absolute right-14 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm hover:bg-black/60 transition-colors"
             aria-label="Save destination">
-            <Heart className="h-4 w-4" fill={saved ? "#E87565" : "none"} stroke={saved ? "#E87565" : "white"} strokeWidth={2} />
+            <Heart className="h-4 w-4"
+              fill={saved ? "#E87565" : "none"}
+              stroke={saved ? "#E87565" : "white"}
+              strokeWidth={2} />
           </button>
 
           {/* Carousel controls */}
@@ -90,7 +108,6 @@ export function DestinationModal({ destination, onClose }: Props) {
                 className="absolute right-3 top-1/2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-sm hover:bg-black/60">
                 <ChevronRight className="h-4 w-4" />
               </button>
-              {/* Dots */}
               <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5">
                 {images.map((_, i) => (
                   <button key={i} type="button" onClick={() => setActiveImg(i)}
@@ -102,8 +119,8 @@ export function DestinationModal({ destination, onClose }: Props) {
           )}
 
           {/* Title overlay */}
-          <div className="absolute bottom-4 left-5">
-            <h2 className="font-serif text-3xl font-bold text-white">
+          <div className="absolute bottom-4 left-5 right-5">
+            <h2 className="font-serif text-2xl font-bold text-white leading-tight">
               {destination.name}, {destination.country} {destination.emoji}
             </h2>
             {detail && (
@@ -114,13 +131,13 @@ export function DestinationModal({ destination, onClose }: Props) {
 
         {/* Scrollable content */}
         <div className="flex-1 overflow-y-auto">
-          <div className="px-5 py-5 space-y-6">
+          <div className="px-5 py-5 space-y-5">
 
-            {/* Rating + price row */}
+            {/* Rating + price */}
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-1.5">
-                  <Star className="h-4 w-4 fill-[#F3A33A] text-[#F3A33A]" />
+                  <span className="text-[#F3A33A]">★</span>
                   <span className="font-bold text-[#1F261F]">{destination.rating}</span>
                   <span className="text-sm text-[#7F7A70]">({destination.reviews})</span>
                 </div>
@@ -143,10 +160,10 @@ export function DestinationModal({ destination, onClose }: Props) {
             {detail && (
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {[
-                  { icon: Clock, label: "Best Time", value: detail.bestTime },
-                  { icon: Languages, label: "Language", value: detail.language },
-                  { icon: DollarSign, label: "Currency", value: detail.currency },
-                  { icon: Globe, label: "Timezone", value: detail.timezone },
+                  { icon: Clock,     label: "Best Time", value: detail.bestTime },
+                  { icon: Languages, label: "Language",  value: detail.language },
+                  { icon: DollarSign,label: "Currency",  value: detail.currency },
+                  { icon: Globe,     label: "Timezone",  value: detail.timezone },
                 ].map((info) => (
                   <div key={info.label} className="rounded-2xl border border-[#E8DED1] bg-white p-3">
                     <info.icon className="h-4 w-4 text-[#2F4F3E]" strokeWidth={1.8} />
@@ -216,7 +233,7 @@ export function DestinationModal({ destination, onClose }: Props) {
           </div>
         </div>
 
-        {/* Footer CTA */}
+        {/* Footer */}
         <div className="shrink-0 flex gap-3 border-t border-[#E8DED1] bg-white px-5 py-4">
           <button type="button" onClick={onClose}
             className="flex-1 rounded-xl border border-[#E8DED1] py-3 text-sm font-semibold text-[#7F7A70] hover:bg-[#F0EDE8] transition-colors">
@@ -228,8 +245,7 @@ export function DestinationModal({ destination, onClose }: Props) {
             Plan This Trip
           </a>
         </div>
-        </motion.div>
-      </div>
+      </motion.div>
     </AnimatePresence>
   );
 }
