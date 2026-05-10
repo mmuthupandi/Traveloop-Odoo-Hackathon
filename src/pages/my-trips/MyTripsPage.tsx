@@ -8,7 +8,7 @@ import { OverviewCard } from "@/components/my-trips/OverviewCard";
 import { SearchBar } from "@/components/my-trips/SearchBar";
 import { TripCard } from "@/components/my-trips/TripCard";
 import { TripsHeader } from "@/components/my-trips/TripsHeader";
-import { TripsSidebar } from "@/components/my-trips/TripsSidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 
 export function MyTripsPage() {
   const [activeTab, setActiveTab] = useState<"all" | TripStatus>("all");
@@ -28,7 +28,7 @@ export function MyTripsPage() {
 
   return (
     <div className="min-h-screen bg-[#F7F4EE] text-[#1F261F]">
-      <TripsSidebar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <AppSidebar activeRoute="my-trips" darkMode={darkMode} onDarkModeChange={setDarkMode} />
       <main className="xl:ml-[282px]">
         <div className="mx-auto flex max-w-[1420px] flex-col gap-8 px-4 py-6 sm:px-6 lg:px-10 xl:px-12 xl:py-10">
           <TripsHeader />

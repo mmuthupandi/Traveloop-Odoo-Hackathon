@@ -1,5 +1,5 @@
 
-import { Sidebar } from "@/components/notes/Sidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 import { Header } from "@/components/notes/Header";
 import { QuickCaptureCard } from "@/components/notes/QuickCaptureCard";
 import { PinnedNotesSection } from "@/components/notes/PinnedNoteCard";
@@ -7,8 +7,15 @@ import { NotesToolbar, NotesGroup, CategoryCard, RecentNotesCard } from "@/compo
 import { NOTES, RECENT_NOTES } from "@/data/notes";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export function TravelNotesDashboard() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
   const pinnedNotes = NOTES.filter(note => note.isPinned);
   
   // Group notes by trip
@@ -21,11 +28,10 @@ export function TravelNotesDashboard() {
 
   return (
     <div className="flex min-h-screen bg-[#F7F4EE]">
-      {/* Left Sidebar */}
-      <Sidebar activeRoute="notes" />
+      <AppSidebar activeRoute="notes" darkMode={darkMode} onDarkModeChange={setDarkMode} />
 
       {/* Main Content Area */}
-      <main className="flex-1 ml-72 flex flex-col lg:flex-row">
+      <main className="flex-1 xl:ml-[282px] flex flex-col lg:flex-row">
         <div className="flex-1 p-10 max-w-5xl">
           <Header />
           

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { BudgetSidebar } from "@/components/budget/BudgetSidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 import { BudgetHeader } from "@/components/budget/BudgetHeader";
 import { TripSelector } from "@/components/budget/TripSelector";
 import { BudgetSummaryCards } from "@/components/budget/BudgetSummaryCards";
@@ -26,7 +26,7 @@ export function BudgetPage() {
 
   return (
     <div className="min-h-screen bg-[#F7F4EE] text-[#1F261F]">
-      <BudgetSidebar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <AppSidebar activeRoute="budget" darkMode={darkMode} onDarkModeChange={setDarkMode} />
 
       <main className="xl:ml-[282px]">
         <div className="mx-auto flex max-w-[1420px] flex-col gap-8 px-4 py-6 sm:px-6 lg:px-10 xl:px-12 xl:py-10">
