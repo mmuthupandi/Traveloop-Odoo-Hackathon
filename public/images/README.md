@@ -6,7 +6,7 @@ Please save the travel van/mountains image as:
 `travel-van-mountains.jpg`
 
 This image should show:
-- A vintage orange/cream VW van with "WONDERLUST" license plate
+- A vintage orange/cream VW van with "Traveloop" license plate
 - Mountain landscape with snow-capped peaks
 - Lake and pine trees
 - Dirt road leading through the scenery

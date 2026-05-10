@@ -1,4 +1,4 @@
-# WONDERLUST Login Page
+# Traveloop Login Page
 
 ## 🔐 Test Credentials
 

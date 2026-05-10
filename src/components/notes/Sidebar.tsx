@@ -41,7 +41,7 @@ export function Sidebar({ activeRoute }: SidebarProps) {
           <Mountain className="w-6 h-6" />
         </div>
         <div>
-          <h1 className="font-serif text-xl font-bold tracking-tight text-[#2F4F3E]">WONDERLUST</h1>
+          <h1 className="font-serif text-xl font-bold tracking-tight text-[#2F4F3E]">Traveloop</h1>
           <p className="font-script text-sm text-[#C46A2D] -mt-1">Stories begin here</p>
         </div>
       </div>

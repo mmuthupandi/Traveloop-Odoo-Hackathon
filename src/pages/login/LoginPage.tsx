@@ -32,7 +32,7 @@ export function LoginPage() {
               <Mountain className="w-7 h-7 text-white" strokeWidth={2.2} />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">WONDERLUST</h1>
+              <h1 className="text-2xl font-bold text-gray-900">Traveloop</h1>
               <p className="text-sm text-gray-600 italic">Stories begin here</p>
             </div>
           </div>

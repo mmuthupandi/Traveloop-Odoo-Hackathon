@@ -67,7 +67,7 @@ export function AppSidebar({ activeRoute, darkMode, onDarkModeChange }: AppSideb
         </div>
         <div>
           <p className="font-serif text-xl font-extrabold tracking-tight text-[#1F261F]">
-            WONDERLUST
+            Traveloop
           </p>
           <p className="font-script text-base text-[#2F4F3E]">Stories begin here</p>
         </div>
