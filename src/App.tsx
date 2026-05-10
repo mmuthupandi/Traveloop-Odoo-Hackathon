@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { HomePage } from "@/pages/home/HomePage";
 import { MyTripsPage } from "@/pages/my-trips/MyTripsPage";
+import { BudgetPage } from "@/pages/budget/BudgetPage";
 import { getRouteFromHash, type AppRoute } from "@/lib/routes";
 
 export default function App() {
@@ -15,5 +16,7 @@ export default function App() {
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
-  return route === "my-trips" ? <MyTripsPage /> : <HomePage />;
+  if (route === "my-trips") return <MyTripsPage />;
+  if (route === "budget") return <BudgetPage />;
+  return <HomePage />;
 }
