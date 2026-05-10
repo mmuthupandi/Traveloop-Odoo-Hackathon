@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PackingSidebar } from "@/components/packing/PackingSidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 import { PackingHeader } from "@/components/packing/PackingHeader";
 import { PackingTripSelector } from "@/components/packing/PackingTripSelector";
 import { CategoryFilterTabs } from "@/components/packing/CategoryFilterTabs";
@@ -115,7 +115,7 @@ export function PackingPage() {
 
   return (
     <div className="min-h-screen bg-[#F7F4EE] text-[#1F261F]">
-      <PackingSidebar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <AppSidebar activeRoute="packing" darkMode={darkMode} onDarkModeChange={setDarkMode} />
 
       <main className="xl:ml-[282px]">
         <div className="mx-auto flex max-w-[1420px] flex-col gap-7 px-4 py-6 sm:px-6 lg:px-10 xl:px-12 xl:py-10">

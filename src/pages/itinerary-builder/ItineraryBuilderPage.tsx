@@ -7,7 +7,7 @@ import {
   type ItineraryStop
 } from "@/data/itinerary-builder";
 import { ItineraryButton } from "@/components/itinerary-builder/ItineraryButton";
-import { ItinerarySidebar } from "@/components/itinerary-builder/ItinerarySidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 import { ItineraryStopCard } from "@/components/itinerary-builder/ItineraryStopCard";
 import { ItineraryTopHeader } from "@/components/itinerary-builder/ItineraryTopHeader";
 import { PageTitleActions } from "@/components/itinerary-builder/PageTitleActions";
@@ -111,10 +111,7 @@ export function ItineraryBuilderPage() {
 
   return (
     <div className="min-h-screen bg-[#F7F4EE] text-[#1F261F]">
-      <ItinerarySidebar
-        darkMode={darkMode}
-        onDarkModeChange={setDarkMode}
-      />
+      <AppSidebar activeRoute="itinerary-builder" darkMode={darkMode} onDarkModeChange={setDarkMode} />
 
       <main className="xl:ml-[282px]">
         <motion.div

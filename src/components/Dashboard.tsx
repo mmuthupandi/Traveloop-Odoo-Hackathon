@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 import { HeroBanner } from "@/components/HeroBanner";
 import { MobileNav } from "@/components/MobileNav";
 import { QuickActions } from "@/components/QuickActions";
-import { Sidebar } from "@/components/Sidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 import { TravelMapCard } from "@/components/TravelMapCard";
 import { UpcomingTrips } from "@/components/UpcomingTrips";
 
@@ -19,7 +19,7 @@ export function Dashboard() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_right,rgba(196,106,45,0.10),transparent_28rem),linear-gradient(135deg,#FAF8F4_0%,#F7F4EE_45%,#EFE6D8_100%)] text-ink dark:bg-[linear-gradient(135deg,#1E241F_0%,#121814_100%)]">
-      <Sidebar darkMode={darkMode} onDarkModeChange={setDarkMode} />
+      <AppSidebar activeRoute="home" darkMode={darkMode} onDarkModeChange={setDarkMode} />
       <MobileNav />
 
       <main className="xl:ml-[282px]">

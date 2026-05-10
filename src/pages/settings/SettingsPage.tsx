@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { SettingsSidebar } from "@/components/settings/SettingsSidebar";
+import { AppSidebar } from "@/components/AppSidebar";
 import { SettingsHeader } from "@/components/settings/SettingsHeader";
 import { ProfileCard } from "@/components/settings/ProfileCard";
 import { PreferencesCard } from "@/components/settings/PreferencesCard";
@@ -26,7 +26,7 @@ export function SettingsPage() {
 
   return (
     <div className="min-h-screen bg-[#F7F4EE] text-[#1F261F]">
-      <SettingsSidebar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <AppSidebar activeRoute="settings" darkMode={darkMode} onDarkModeChange={setDarkMode} />
 
       <main className="xl:ml-[282px]">
         <div className="mx-auto flex max-w-[1420px] flex-col gap-7 px-4 py-6 sm:px-6 lg:px-10 xl:px-12 xl:py-10">
