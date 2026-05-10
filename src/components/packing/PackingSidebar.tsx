@@ -20,7 +20,11 @@ export function PackingSidebar({ darkMode, setDarkMode }: PackingSidebarProps) {
           <Mountain className="h-7 w-7" />
         </div>
         <div>
+<<<<<<< HEAD
           <p className="font-serif text-xl font-extrabold text-[#1F261F]">Traveloop</p>
+=======
+          <p className="font-serif text-xl font-extrabold text-[#1F261F]">TRAVELOOP</p>
+>>>>>>> 54b5019e4b75a43c30cd948f63b0f6b8185d050d
           <p className="font-script text-lg text-[#2F4F3E]">Stories begin here</p>
         </div>
       </div>

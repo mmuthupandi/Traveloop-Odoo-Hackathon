@@ -28,12 +28,12 @@ export function TripsHeader() {
         >
           <Avatar className="h-10 w-10">
             <AvatarImage
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
-              alt="Aarav Sharma"
+              src="https://upload.wikimedia.org/wikipedia/en/0/03/Walter_White_S5B.png"
+              alt="Heisenberg"
             />
-            <AvatarFallback>AS</AvatarFallback>
+            <AvatarFallback>HB</AvatarFallback>
           </Avatar>
-          <span className="text-sm font-semibold text-[#24221D]">Aarav Sharma</span>
+          <span className="text-sm font-semibold text-[#24221D]">Heisenberg</span>
           <ChevronDown className="mr-2 h-4 w-4 text-[#605B52]" />
         </button>
       </div>

@@ -30,10 +30,10 @@ export function Header() {
           <DropdownMenuTrigger className="flex items-center gap-3 pl-1 pr-3 py-1 bg-white border border-[#E8DED1] rounded-full hover:shadow-md transition-all outline-none">
             <Avatar className="w-10 h-10 border border-[#E8DED1]">
               <AvatarImage src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" />
-              <AvatarFallback>AS</AvatarFallback>
+              <AvatarFallback>HB</AvatarFallback>
             </Avatar>
             <div className="text-left hidden sm:block">
-              <p className="text-sm font-bold text-[#2F4F3E] leading-tight">Aarav Sharma</p>
+              <p className="text-sm font-bold text-[#2F4F3E] leading-tight">Heisenberg</p>
               <p className="text-[10px] text-[#7F7A70] uppercase tracking-wider">Premium Member</p>
             </div>
             <ChevronDown className="w-4 h-4 text-[#7F7A70]" />

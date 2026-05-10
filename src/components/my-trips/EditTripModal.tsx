@@ -54,7 +54,7 @@ export function EditTripModal({ trip, onClose }: Props) {
   );
 
   const [travelers, setTravelers] = useState([
-    { id: "1", name: "Aarav Sharma", role: "Organizer", avatar: trip.avatars[0] ?? "" },
+    { id: "1", name: "Heisenberg",  role: "Organizer", avatar: trip.avatars[0] ?? "" },
     { id: "2", name: "Priya Mehta",  role: "Traveler",  avatar: trip.avatars[1] ?? "" },
     { id: "3", name: "Rohan Das",    role: "Traveler",  avatar: trip.avatars[2] ?? "" },
   ]);

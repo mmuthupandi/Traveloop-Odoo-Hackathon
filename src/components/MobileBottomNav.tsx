@@ -9,7 +9,6 @@ import {
   Route,
   Backpack,
   NotebookPen,
-  UserRound,
   Settings,
   X,
   Mountain
@@ -29,7 +28,6 @@ const moreItems = [
   { label: "Itinerary Builder", icon: Route,       route: "itinerary-builder" as AppRoute },
   { label: "Packing List",      icon: Backpack,    route: "packing"           as AppRoute },
   { label: "Notes",             icon: NotebookPen, route: "notes"             as AppRoute },
-  { label: "Profile",           icon: UserRound,   route: "profile"           as AppRoute },
   { label: "Settings",          icon: Settings,    route: "settings"          as AppRoute },
 ];
 
@@ -141,7 +139,7 @@ export function MobileBottomNav({ activeRoute }: Props) {
               </div>
 
               {/* Grid */}
-              <div className="grid grid-cols-5 gap-2">
+              <div className="grid grid-cols-4 gap-2">
                 {moreItems.map((item, i) => {
                   const Icon = item.icon;
                   const isActive = item.route === activeRoute;

@@ -28,13 +28,13 @@ export function ItineraryTopHeader() {
         >
           <Avatar className="h-11 w-11">
             <AvatarImage
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80"
-              alt="Aarav Sharma"
+              src="https://upload.wikimedia.org/wikipedia/en/0/03/Walter_White_S5B.png"
+              alt="Heisenberg"
             />
-            <AvatarFallback>AS</AvatarFallback>
+            <AvatarFallback>HB</AvatarFallback>
           </Avatar>
           <span className="hidden text-sm font-bold text-[#24221D] sm:block">
-            Aarav Sharma
+            Heisenberg
           </span>
           <ChevronDown className="h-4 w-4 text-[#605B52]" />
         </button>
