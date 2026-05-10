@@ -78,7 +78,8 @@ export const quickActions: QuickAction[] = [
     icon: Map,
     palette: "bg-[#EAF0E8]",
     iconPalette: "bg-[#CFE1D1] text-forest",
-    route: "itinerary-builder"
+    route: "itinerary-builder",
+    href: "#/explore"
   },
   {
     title: "Explore Places",
