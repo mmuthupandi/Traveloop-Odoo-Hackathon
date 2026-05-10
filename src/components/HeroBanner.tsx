@@ -1,9 +1,19 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Paperclip, Plane, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { heroImage } from "@/data/travel-dashboard";
+import { heroImages } from "@/data/travel-dashboard";
 
 export function HeroBanner() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 18 }}
@@ -12,13 +22,20 @@ export function HeroBanner() {
       className="relative min-h-[410px] overflow-hidden rounded-[2rem] bg-forest shadow-float md:min-h-[440px]"
       aria-labelledby="hero-title"
     >
-      <img
-        src={heroImage}
-        alt="A traveler overlooking a mountain range at sunrise"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#F7E9D1]/95 via-[#E8C894]/50 to-[#1A251D]/10" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#171D18]/55 via-transparent to-white/10" />
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={currentImageIndex}
+          src={heroImages[currentImageIndex]}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          alt="A traveler overlooking a mountain range at sunrise"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#F7E9D1]/90 via-[#E8C894]/40 to-[#1A251D]/10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#171D18]/50 via-transparent to-white/10" />
       <div className="absolute left-[48%] top-10 hidden text-ink/75 md:block">
         <svg
           width="214"

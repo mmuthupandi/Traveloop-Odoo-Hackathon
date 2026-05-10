@@ -420,6 +420,26 @@ export function ExplorePage() {
     document.documentElement.classList.toggle("dark", darkMode);
   }, [darkMode]);
 
+  // Handle destination from URL query
+  useEffect(() => {
+    const handleUrlQuery = () => {
+      const hash = window.location.hash;
+      const queryIndex = hash.indexOf("?");
+      if (queryIndex !== -1) {
+        const searchParams = new URLSearchParams(hash.slice(queryIndex + 1));
+        const destination = searchParams.get("destination");
+        if (destination) {
+          setQuery(destination);
+          setMessage(`Showing results for "${destination}".`);
+        }
+      }
+    };
+
+    handleUrlQuery();
+    window.addEventListener("hashchange", handleUrlQuery);
+    return () => window.removeEventListener("hashchange", handleUrlQuery);
+  }, []);
+
   const allDestinations = useMemo(
     () => [...popularDestinations, ...recommendedDestinations],
     []
